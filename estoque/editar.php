@@ -17,11 +17,11 @@ $info = [];
             $info = $sql->fetch(PDO::FETCH_ASSOC);
 
         } else {
-            header("Location: home.php");
+            header("Location: index.php");
             exit;
         }
     } else {
-        header("Location: home.php");
+        header("Location: index.php");
         exit;
     }
 
@@ -38,9 +38,26 @@ $info = [];
 
 <h1>Edição de Produtos</h1>
 
+<div id="img-container">
+
+
+<div> <img src="arquivo/<?=$info['avatar']; ?>" alt="foto-do-produto" id="img-produto"> </div>
+
+<div>  <h2>Trocar Avatar</h2> </div>
+
+<div>
+
+    <form action="recebedor.php" method="post" enctype="multipart/form-data">
+        <input type="hidden" name="id" value="<?=$info['id']; ?>">
+        <input type="file" name="arquivo" />
+        <input type="submit" value="enviar">
+    </form>
+
+</div>
+
     <form action="editar_action.php" method="post">
 
-    <input type="hidden" name="id" value="<?=$info['id']; ?>" >
+    <input type="hidden" name="id" value="<?=$info['id']; ?>">
     
         <label for="">
             Código:
